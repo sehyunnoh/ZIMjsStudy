@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM Frame - Fit Template</title>
+    <script src="https://zimjs.org/cdn/1.2.1/createjs_min.js"></script>
+    <script src="https://zimjs.org/cdn/10.5.5/zim.js"></script>
+    <script>
+      var frame = new Frame("fit", 1024, 768, light, dark);
+      frame.on("ready", function() {
+        var stage = frame.stage;
+        var stageW = frame.width;
+        var stageH = frame.height;
+        // button
+        // width, height, label, backgroundColor, rollBackgroundColor, color, rollColor, borderColor, borderRollColor, borderWidth, corner, shadowColor, shadowBlur, hitPadding, gradient, gloss, dashed, backing, rollBacking, rollPersist, icon, rollIcon, toggle, toggleBacking, rollToggleBacking, toggleIcon, rollToggleIcon, toggleEvent, wait, waitTime, waitBackgroundColor, rollWaitBackgroundColor, waitColor, rollWaitColor, waitModal, waitEnabled, waitBacking, rollWaitBacking, waitIcon, rollWaitIcon, align, valign, indent, indentHorizontal, indentVertical, style, group, inherit
+
+        var info = 'width, height, label, backgroundColor, rollBackgroundColor, color';
+        var infoList = info.split(', ');
+
+        var value = '60, 30, "super", yellow, green, blue';
+        var valList = value.split(', ');
+
+        var output = [];
+        var lastLine = '';
+
+        for(let i=0; i<infoList.length;i++){
+          lastLine += `new Button({${infoList[i]}: ${valList[i]}}),`;
+          output.push(lastLine);
+        }
+
+        zog(output);
+
+        var buttons = [
+          new Button(),
+          new Button({ width: 60, height: 60, label: "Hi" }),
+          new Button({ backgroundColor: yellow, rollBackgroundColor: green }),
+          new Button({ color: green, rollColor: black }),
+          new Button({ borderColor: green, borderRollColor: black }),
+          new Button({ borderColor: black, borderRollColor: white }),
+          new Button({ color: yellow, rollColor: black})
+        ];
+        // new Tile(buttons, 4, 8, 20, 20).center(); // random
+        // new Tile(series(buttons), 4, 8, 20, 20).center(); // series
+        // new Tile({
+        //   obj: series(buttons),
+        //   cols: 4,
+        //   rows: 8,
+        //   spacingH: 20,
+        //   spacingV: 20,
+        //   align: "center",
+        //   count: buttons.length
+        // }).center(); // series
+
+        // List(width, height, list, viewNum, vertical, currentSelected, align, valign, labelAlign, labelValign, labelIndent, labelIndentHorizontal, labelIndentVertical, indent, spacing, backgroundColor, rollBackgroundColor, selectedBackgroundColor, selectedRollBackgroundColor, backdropColor, color, selectedColor, rollColor, selectedRollColor, borderColor, borderWidth, padding, corner, swipe, scrollBarActive, scrollBarDrag, scrollBarColor, scrollBarAlpha, scrollBarFade, scrollBarH, scrollBarV, slide, slideDamp, slideSnap, shadowColor, shadowBlur, paddingHorizontal, paddingVertical, scrollWheel, damp, titleBar, titleBarColor, titleBarBackgroundColor, titleBarHeight, draggable, boundary, onTop, close, closeColor, excludeCustomTap, organizer, checkBox, pulldown, clone, cancelCurrentDrag, style, group, inherit)
+        new List({width:null, height:stageH-100, list:buttons, spacing:10, viewNum:20}).center();
+
+
+        stage.update();
+      }); 
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+
+  <body></body>
+</html>
