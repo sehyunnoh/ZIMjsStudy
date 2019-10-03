@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+
+<!-- for Apple -->
+<meta name="viewport" content="width=device-width, maximum-scale=1, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="apple-touch-icon-precomposed" href="images/iconS_57.png" />
+
+<script src="https://d309knd7es5f10.cloudfront.net/run_prettify.js"></script>
+
+<style>
+/* desert scheme ported from vim to google prettify */
+pre.prettyprint {
+	background-color:#333;
+	padding:20px;
+	padding-top:30px;
+	margin-top:6px;
+	display: block;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border:none !important;
+	font-size:14px;
+}
+pre .nocode { background-color: none; color: #000 }
+pre .str { color: #ffa0a0 } /* string  - pink */
+pre .kwd { color: #f0e68c; font-weight: bold }
+pre .com { color: #87ceeb } /* comment - skyblue */
+pre .typ { color: #98fb98 } /* type    - lightgreen */
+pre .lit { color: #FC9; } /* peach #cd5c5c }*/ /* literal - darkred */
+pre .pun { color: #fff }    /* punctuation */
+pre .pln { color: #fff }    /* plaintext */
+pre .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
+pre .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
+pre .atv { color: #fff; }/* #ffa0a0 }*/ /* attribute value - pink */
+pre .dec { color: #98fb98 } /* decimal         - lightgreen */
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { }
+
+@media print {
+  pre.prettyprint { background-color: none }
+  pre .str, code .str { color: #060 }
+  pre .kwd, code .kwd { color: #006; font-weight: bold }
+  pre .com, code .com { color: #600; font-style: italic }
+  pre .typ, code .typ { color: #404; font-weight: bold }
+  pre .lit, code .lit { color: #044 }
+  pre .pun, code .pun { color: #440 }
+  pre .pln, code .pln { color: #000 }
+  pre .tag, code .tag { color: #006; font-weight: bold }
+  pre .atn, code .atn { color: #404 }
+  pre .atv, code .atv { color: #060 }
+}
+
+</style>
+
+	<title>ZIM js - DISTILL EXAMPLES - Custom Minify</title>
+
+	<link href="distill.css" rel="stylesheet" type="text/css" />
+
+    <script> /* to handle older IE browswers */
+		document.createElement('article');
+		document.createElement('section');
+		document.createElement('aside');
+		document.createElement('hgroup');
+		document.createElement('nav');
+		document.createElement('header');
+		document.createElement('footer');
+		document.createElement('figure');
+		document.createElement('figcaption');
+  	</script>
+
+
+
+</head>
+
+<body>
+	<header>
+        <h1>ZIM js - DISTILL EXAMPLES - Custom Minify</h1>
+        <div id="banner">
+        <a href="index.html" id="zimpic"><img id="logo2" src="images/logo.jpg" border="0" alt="ZIMjs - WONDER - Micro Stats" /></a>
+		<a href="../index.html"><div style="cursor:pointer; position:absolute; width:150px; height:130px; right:0px; top:50px; z-index:2;"></div>
+   		</div></a>
+  	</header>
+
+    <article>
+
+		<p class="darklinks">EXAMPLES - ZIM Distill lets you minify a custom collection of ZIM functions.  You can then use this code for your project by hosting it on your server or including it in your mobile package, etc.</p>
+
+<pre class="prettyprint">
+// start recording which functions you use
+zim.DISTILL = true;
+
+// run your code and at the end run the distill() function
+// you may need to place this in a restart event function, etc.
+zim.distill();
+
+// this will log to the console a series of numbers
+// separated by spaces representing the functions used
+
+1 6 81 81 79 75 77 75 55 54 52 53 55 54 52 53 55 54 52
+53 42 80 74 46 46 46 80 74 46 46 46 55 54 52 53 55 54
+52 53 55 54 52 53 42 80 74
+
+// copy these into the zim DISTILL form field
+// to get the minified JavaScript for these functions
+// NOTE: Distill will not duplicate the functions
+// data duplication is left in for statistical purposes
+
+</pre>
+
+<p class="darklinks">NOTE - if you run your app with distilled code and something is missing, you can press the MORE link on the form to manually select functions.  If this happens to you, <a href="mailto:zim@danzen.com">let&nbsp;us&nbsp;know</a> and we can adjust dependencies.</p>
+
+
+<p class="darklinks"><a href="index.html">TRY IT</a> - it is like magic!  Here is an example of the code that is created:</p>
+
+<form action="">
+<textarea style="width:95%; height:300px; padding:20px 5px;" autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'>
+// ZIMjs - http://zimjs.com - DISTILLED (15.4 KB)
+// for Vault 7 by Dan Zen
+var zog=console.log.bind(console);if(typeof zon==="undefined"){zon=false}function zot(a){return a==null}function zid(a){return document.getElementById(a)}function zil(){var e=function(a){if(!a){a=event}if(a.keyCode&amp;&amp;(a.keyCode>=32&amp;&amp;a.keyCode<=40)){a.preventDefault()}};var d=function(a){if(!a){a=event}a.preventDefault()};var f=d;window.addEventListener("keydown",e);window.addEventListener("mousewheel",d);window.addEventListener("DOMMouseScroll",f);return[e,d,f]}function zob(a,f,i,h){if(f.length==1&amp;&amp;f[0].constructor==={}.constructor){var g=f[0];var b=(zot(i))?a.toString().split(/\n/,1)[0].match(/\((.*)\)/)[1].replace(/\s+/g,"").split(","):i.replace(/\s+/g,"").split(",");var c=[];var j;var d;for(j=0;j<b.length;j++){d=b[j].split("=")[0];b[j]=d;c.push(g[d])}for(j in g){if(b.indexOf(j)<0){if(zon){zog(a,"bad argument "+j)}}}var e;if(e=(a.prototype.isPrototypeOf(h))?new (a.bind.apply(a,[null].concat(c)))():a.apply(null,c)){return e}else{return true}}}var zim=function(b){b.OPTIMIZE=false;b.ACTIONEVENT="mousedown";b.distill=function(){zog("zim.Distill() - done - you can remove command")};b.scale=function(c,d){if(zot(c)||!c.scaleX){return}if(zot(d)){d=1}c.scaleX=c.scaleY=d;return c};b.fit=function(l,f,p,d,r,i){var t="obj, left, top, width, height, inside";var e;if(e=zob(b.fit,arguments,t)){return e}if(zot(l)||!l.getBounds){return}if(!l.getBounds()){zog("zim create - fit(): please setBounds() on object");return}if(zot(f)){if(!l.getStage()){zog("zim create - fit(): please add boundary dimensions or add obj to stage first");return}if(!l.getStage().getBounds()){zog("zim create - fit(): please add boundary dimensions or add obj with bounds to stage first");return}var k=l.getStage().getBounds().width;var s=l.getStage().getBounds().height;f=0;p=0;d=k;r=s}if(zot(i)){i=true}l.scaleX=l.scaleY=1;var q=d;var m=r;var n=l.getBounds().width;var j=l.getBounds().height;var g;if(i){if(q/m>=n/j){g=m/j}else{g=q/n}}else{if(q/m>=n/j){g=q/n}else{g=m/j}}l.scaleX=l.scaleY=g;var c=n*g;var o=j*g;l.x=l.regX*g+f+(q-c)/2;l.y=l.regY*g+p+(m-o)/2;return{x:l.x,y:l.y,width:c,height:o,scale:g,bX:f,bY:p,bWidth:d,bHeight:r}};b.Rectangle=function(c,h,i,j,f,g){var k="width, height, fill, stroke, strokeSize, corner";var d;if(d=zob(b.Rectangle,arguments,k)){return d}function e(){if(zot(c)){c=100}if(zot(h)){h=100}if(zot(i)){i="black"}if(zot(g)){g=0}var o=this;this.mouseChildren=false;var m=this.shape=new createjs.Shape();this.addChild(m);var n=m.graphics;var p=n.beginFill(i).command;if(!zot(j)){var l=n.beginStroke(j).command;if(zot(f)){f=1}var q=n.setStrokeStyle(f).command}if(g>0){n.rr(0,0,c,h,g)}else{n.r(0,0,c,h)}this.width=c;this.height=h;this.setBounds(0,0,this.width,this.height);this.setFill=function(r){if(zot(r)){return}i=r;p.style=i};Object.defineProperty(o,"color",{get:function(){return i},set:function(r){o.setFill(r)}});this.setStroke=function(r){if(!l||zot(r)){return}j=r;l.style=j};this.setStrokeSize=function(r){if(!q||zot(r)){return}f=r;q.width=f};this.clone=function(){return new b.Rectangle(c,h,i,j,f,g)}}e.prototype=new createjs.Container();e.prototype.constructor=b.Rectangle;return new e()};b.Triangle=function(j,i,h,l,m,g,d,k){var n="a, b, c, fill, stroke, strokeSize, center, adjust";var f;if(f=zob(b.Triangle,arguments,n)){return f}function e(){if(zot(j)){j=100}if(zot(i)){i=j}if(zot(h)){h=j}if(h==-1){h=Math.sqrt(Math.pow(j,2)+Math.pow(i,2))}if(zot(l)){l="black"}if(zot(d)){d=true}if(zot(k)){k=0}this.mouseChildren=false;var v=this;var z=[j,i,h];z.sort(function(B,A){return A-B});aa=z[0];bb=z[1];cc=z[2];if(aa>bb+cc){zog("zim build - Triangle(): invalid triangle lengths");return}var y=this.shape=new createjs.Shape();this.addChild(y);var s=y.graphics;var p=s.beginFill(l).command;if(!zot(m)){var t=s.beginStroke(m).command;if(zot(g)){g=1}var o=s.setStrokeStyle(g).command}s.mt(0,0);s.lt(j,0);var u=Math.acos((Math.pow(bb,2)+Math.pow(cc,2)-Math.pow(aa,2))/(2*bb*cc))*180/Math.PI;var r=Math.asin(bb*Math.sin(u*Math.PI/180)/aa)*180/Math.PI;var q=180-u-r;var c;if(h==aa){c=u}else{if(h==bb){c=r}else{c=q}}var x=Math.cos(c*Math.PI/180)*i;var w=Math.sin(c*Math.PI/180)*i;this.width=Math.max(j,j-x);this.height=w;this.setBounds(0,0,this.width,this.height);y.y=this.height;s.lt(j-x,0-w);s.cp();if(d){this.regX=this.width/2;this.regY=this.height/2+k}this.setFill=function(A){if(zot(A)){return}l=A;p.style=l};Object.defineProperty(v,"color",{get:function(){return l},set:function(A){v.setFill(A)}});this.setStroke=function(A){if(!t||zot(A)){return}m=A;t.style=m};this.setStrokeSize=function(A){if(!o||zot(A)){return}g=A;o.width=g};this.clone=function(){return new b.Triangle(j,i,h,l,m,g,d,k)}}e.prototype=new createjs.Container();e.prototype.constructor=b.Triangle;return new e()};b.Label=function(k,m,d,g,f,i,h,j){var l="text, size, font, color, rollColor, shadowColor, shadowBlur, align";var c;if(c=zob(b.Label,arguments,l)){return c}function e(){if(zot(k)){k="LABEL"}if(k===""){k=" "}if(zot(m)){m=36}if(zot(d)){d="arial"}if(zot(g)){g="black"}if(zot(f)){f=g}if(zot(i)){i=-1}if(zot(h)){h=14}if(zot(j)){j="left"}var n=this;this.mouseChildren=false;var p=this.label=new createjs.Text(String(k),m+"px "+d,g);p.textBaseline="alphabetic";p.textAlign=j;if(i!=-1&amp;&amp;h>0){p.shadow=new createjs.Shadow(i,3,3,h)}this.addChild(p);var o=new createjs.Shape();o.graphics.f("black").r(0,0,this.getBounds().width,this.getBounds().height);this.hitArea=o;this.width=this.getBounds().width;this.height=this.getBounds().height;if(j=="center"){this.setBounds(-this.width/2,0,this.width,this.height)}else{if(j=="right"){this.setBounds(-this.width,0,this.width,this.height)}else{this.setBounds(0,0,this.width,this.height)}}p.y=m-m/6;Object.defineProperty(n,"text",{get:function(){var q=(p.text==" ")?"":p.text;return q},set:function(q){if(zot(q)){q=" "}p.text=String(q);n.width=p.getBounds().width;n.height=p.getBounds().height;if(j=="center"){n.setBounds(-n.width/2,0,n.width,n.height)}else{if(j=="right"){n.setBounds(-n.width,0,n.width,n.height)}else{n.setBounds(0,0,n.width,n.height)}}}});Object.defineProperty(n,"color",{get:function(){return g},set:function(q){g=q;p.color=g;if(!b.OPTIMIZE&amp;&amp;n.getStage()){n.getStage().update()}}});Object.defineProperty(n,"rollColor",{get:function(){return f},set:function(q){f=q}});this._enabled=true;Object.defineProperty(n,"enabled",{get:function(){return n._enabled},set:function(q){a(n,q);p.color=g;n.mouseChildren=false;if(!b.OPTIMIZE&amp;&amp;n.getStage()){n.getStage().update()}}});this.showRollColor=function(q){if(zot(q)){q=true}if(q){p.color=f}else{p.color=g}if(n.getStage()){n.getStage().update()}};this.on("mouseover",function(q){n.showRollColor()});this.on("mouseout",function(q){n.showRollColor(false)});this.clone=function(){return new b.Label(n.text,m,d,g,f,i,h)};this.dispose=function(){n.removeAllEventListeners();return true}}e.prototype=new createjs.Container();e.prototype.constructor=b.Label;return new e()};b.Button=function(c,o,l,h,f,e,g,n,j,i,k){var p="width, height, label, color, rollColor, borderColor, borderThickness, corner, shadowColor, shadowBlur, hitPadding";var d;if(d=zob(b.Button,arguments,p)){return d}function m(){if(zot(c)){c=200}if(zot(o)){o=60}if(zot(h)){h="#C60"}if(zot(f)){f="#F93"}if(zot(e)){e=null}if(zot(g)){g=1}if(zot(n)){n=20}if(zot(j)){j="rgba(0,0,0,.3)"}if(zot(i)){i=14}if(zot(k)){k=0}if(zot(l)){l="PRESS"}if(typeof l==="string"||typeof l==="number"){l=new b.Label(l,36,"arial","white")}var t=this;this.mouseChildren=false;this.cursor="pointer";var q=new b.Rectangle(c,o,h,e,g,n);this.addChild(q);this.backing=q;if(k>0){var s=new createjs.Shape();s.graphics.f("#000").r(-k,-k,c+k*2,o+k*2);this.hitArea=s}if(j!=-1&amp;&amp;i>0){q.shadow=new createjs.Shadow(j,3,3,i)}this.setBounds(0,0,c,o);this.width=c;this.height=o;l.x=(c-l.getBounds().width)/2+1;l.y=(o-l.getBounds().height)/2+2;this.addChild(l);this.label=l;Object.defineProperty(t,"text",{get:function(){var v=(l.text==" ")?"":l.text;return v},set:function(v){l.text=v;l.x=(c-l.getBounds().width)/2+1;l.y=(o-l.getBounds().height)/2+2}});Object.defineProperty(t,"color",{get:function(){return h},set:function(v){h=v;q.color=h;if(!b.OPTIMIZE&amp;&amp;t.getStage()){t.getStage().update()}}});Object.defineProperty(t,"rollColor",{get:function(){return f},set:function(v){f=v}});this._enabled=true;Object.defineProperty(t,"enabled",{get:function(){return t._enabled},set:function(v){a(t,v);t.mouseChildren=false;l.color=l.color;if(!b.OPTIMIZE&amp;&amp;t.getStage()){t.getStage().update()}}});this.on("mouseover",u);function u(v){t.on("mouseout",r);q.color=f;t.label.showRollColor();if(t.getStage()){t.getStage().update()}}function r(v){t.off("mouseout",r);q.color=h;t.label.showRollColor(false);if(t.getStage()){t.getStage().update()}}this.dispose=function(){t.removeAllEventListeners();t.removeChild(q);t.removeChild(t.label);t.label.dispose();q=null;t.label=null;return true}}m.prototype=new createjs.Container();m.prototype.constructor=b.Button;return new m()};b.dashedLinesOn=function(){if(b.dashed){return}b.dashed=true;createjs.Graphics.prototype.dashedLineTo=function(e,k,d,j,h){this.moveTo(e,k);var g=d-e;var f=j-k;var i=Math.floor(Math.sqrt(g*g+f*f)/h);var m=g/i;var l=f/i;var c=0;while(c++<i){e+=m;k+=l;this[c%2==0?"moveTo":"lineTo"](e,k)}this[c%2==0?"moveTo":"lineTo"](d,j);return this};createjs.Graphics.prototype.drawDashedRect=function(f,j,d,i,c){this.moveTo(f,j);var e=f+d;var g=j+i;this.dashedLineTo(f,j,e,j,c);this.dashedLineTo(e,j,e,g,c);this.dashedLineTo(e,g,f,g,c);this.dashedLineTo(f,g,f,j,c);return this}};b.Manager=function(c){var d=this;this.items=[];this.add=function(e){d.items.push(e)};this.resize=function(){if(!d){return}for(var e=0;e<d.items.length;e++){if(!d.items[e].resize()){d.items.splice(e)}}};this.dispose=function(){for(var e=0;e<d.items.length;e++){d.items[e].dispose()}d.items=[];d=null;return true}};b.GuideManager=function(){b.Manager.call(this,"GuideManager")};b.GuideManager.prototype=new b.Manager();b.GuideManager.prototype.constructor=b.GuideManager;b.GridManager=function(){b.Manager.call(this,"GridManager")};b.GridManager.prototype=new b.Manager();b.GridManager.prototype.constructor=b.GridManager;b.Layout=function(j,g,c,l,f,k,i,h){var m="holder, regions, lastMargin, backgroundColor, vertical, regionShape, scalingObject, hideKey";var e;if(e=zob(b.Layout,arguments,m)){return e}function d(){if(zot(j)||!j.getBounds){zog("zim pages - Layout(): please provide an object with bounds set that holds the objects being laid out");return}i=(zot(i))?j:i;if(!i.getBounds||!i.getBounds()){zog("zim pages - Layout(): holder must have bounds set or provide a scalingObject with bounds");return}var n=i.getBounds();j.setBounds(0,0,n.width,n.height);if(zot(c)){c=0}if(zot(f)){f=true}if(zot(l)){l=""}if(zot(h)){h="B"}b.dashedLinesOn();var v=new createjs.Shape();var z=this;this.active=true;this.regions=g;var o;var w=0;var y="minWidth";var s="width";var D="height";var q="marginLeft";var u="maxHeight";var B="x";var p="y";if(f){y="minHeight";s="height";D="width";q="marginTop";u="maxWidth";B="y";p="x"}for(var x=0;x<g.length;x++){o=g[x];if(!o.object||!o.object.getBounds()){zog("zim pages - Layout(): each region object must have an object with setBounds() set");return}if(!o[y]){o[y]=0}if(!o[s]){o[s]=0}if(!o.backgroundColor){o.backgroundColor=""}o.given=0;o.maxGiven=0;if(!o[q]){o[q]=0}if(!o[u]){o[u]=100}if(f){if(!o.align){o.align="middle"}if(!o.valign){if(x==0){o.valign="top"}else{if(x==g.length-1){o.valign="bottom"}else{o.valign="middle"}}if(g.length==1){o.valign="middle"}}}else{if(!o.valign){o.valign="top"}if(!o.align){if(x==0){o.align="left"}else{if(x==g.length-1){o.align="right"}else{o.align="middle"}}if(g.length==1){o.align="middle"}}}if(o[s]){o[y]=0}w+=o[s]+o[q]}w+=c;if(w>100){zog("zim pages - Layout(): cannot fit regions into 100% bounds");return}var t=100-w;C();function C(){var E=0;for(var r=0;r<g.length;r++){o=g[r];o.given=0;if(o[s]==0){E+=o.object.getBounds()[s]}}for(var r=0;r<g.length;r++){o=g[r];if(o[s]==0){o.given=o.object.getBounds()[s]/E*t}}}this.resize=function(){if(!z.active){return}n=i.getBounds();j.setBounds(0,0,n.width,n.height);v.graphics.clear();if(l!=""){v.graphics.f(l).r(0,0,n.width,n.height)}for(var Q=0;Q<g.length;Q++){o=g[Q];o.maxGiven=0;o.marginGiven=0}var R=true;var V;var K;var N;var M;var E;var r;var O;var X=t;while(R){K=0;R=false;V=true;for(var Q=0;Q<g.length;Q++){o=g[Q];if(o.given>0&amp;&amp;o.maxGiven==0){N=o.object.getBounds()[s];M=o.object.getBounds()[D];E=o.given*n[s]/100;r=o[u]*n[D]/100;O=M/N*E;if(O>r){R=true;o.maxGiven=N/M*r*100/n[s];K+=o.given-o.maxGiven;X-=o.maxGiven}else{V=false}}}if(!R){break}if(V){break}totalPrimaries=0;for(var Q=0;Q<g.length;Q++){o=g[Q];if(o[s]==0&amp;&amp;o.maxGiven==0){totalPrimaries+=o.object.getBounds()[s]}}for(var Q=0;Q<g.length;Q++){o=g[Q];if(o[s]==0&amp;&amp;o.maxGiven==0){o.given=o.object.getBounds()[s]/totalPrimaries*X}}}var G=true;o=g[0];if(o.maxGiven>0){if(o.maxGiven<o[y]){o[s]=o[y];G=false}}else{if(o.given>0){if(o.given<o[y]){o[s]=o[y];G=false}}}o=g[g.length-1];if(o.maxGiven>0){if(o.maxGiven<o[y]){o[s]=o[y];G=false}}else{if(o.given>0){if(o.given<o[y]){o[s]=o[y];G=false}}}if(!G){w=0;for(var Q=0;Q<g.length;Q++){o=g[Q];w+=o[s]+o[q]}w+=c;if(w>100){zog("zim build - Layout(): cannot fit regions into 100% bounds");return}t=100-w;C();z.resize();return}var W=true;var J=0;var H=0;for(var Q=0;Q<g.length;Q++){o=g[Q];J+=o[q];if(o[s]>0){H+=o[s]}else{if(o.maxGiven>0){H+=o.maxGiven}else{if(o.given>0){H+=o.given}}}if(o[s]==0){W=false}}if(W||V){J+=c;var F=100-H-J;J-=(c+g[0][q]);if(F!=0&amp;&amp;J!=0){for(var Q=0;Q<g.length;Q++){if(Q==0){continue}o=g[Q];o.marginGiven=o[q]/J*(J+F)}}}var I=0;var P=0;var N;var M;var U;var L;var T;if(k&amp;&amp;k.graphics){var S=k.graphics;S.c()}for(var Q=0;Q<g.length;Q++){o=g[Q];if(o.marginGiven>0){I+=o.marginGiven*n[s]/100}else{I+=o[q]*n[s]/100}if(o[s]>0){N=o[s]}else{if(o.maxGiven>0){N=o.maxGiven}else{if(o.given>0){N=o.given}else{N=0}}}N=N*n[s]/100;M=o[u]*n[D]/100;P=(n[D]-M)/2;if(f){U=b.fit(o.object,P,I,M,N)}else{U=b.fit(o.object,I,P,N,M)}if(o.valign=="top"){o.object.y=U.bY}else{if(o.valign=="bottom"){o.object.y=U.bY+U.bHeight-U.height}}if(o.align=="left"){o.object.x=U.bX}else{if(o.align=="right"){o.object.x=U.bX+U.bWidth-U.width}}if(k&amp;&amp;k.graphics){S.s("white").ss(2).r(U.bX,U.bY,U.bWidth,U.bHeight);S.s("#ff8203").ss(2).drawDashedRect(U.bX,U.bY,U.bWidth,U.bHeight,20)}T=L=0;if(I==0||(I+N)==n[s]){if(f){T=1}else{L=1}}if(M==n[D]){if(f){L=1}else{T=1}}if(o.backgroundColor!=""){v.graphics.f(o.backgroundColor).r(U.bX,U.bY,U.bWidth+L,U.bHeight+T)}I+=N}};this.resize();if(k){j.addChild(k)}j.addChildAt(v,0);window.addEventListener("keydown",A);function A(r){if(!r){r=event}if(k){if(String.fromCharCode(r.keyCode)==h.toUpperCase()){k.visible=!k.visible;if(k.getStage()){k.getStage().update()}}}}this.disable=function(){z.active=false;window.removeEventListener("keydown",A);if(k){k.alpha=0}};this.enable=function(){z.active=true;window.addEventListener("keydown",A);z.resize();if(k){k.alpha=1}};this.removeShape=function(){if(k){k.graphics.clear();j.removeChild(k);k=null;k=false}window.removeEventListener("keydown",A)};this.addShape=function(r,E){z.removeShape();k=r;window.addEventListener("keydown",A);j.addChild(k);z.resize()};this.dispose=function(){z.removeShape();return true}}d.prototype=new createjs.EventDispatcher();d.prototype.constructor=b.Layout;return new d()};b.LayoutManager=function(){var c=this;this.items=[];this.add=function(d){c.items.push(d)};this.resize=function(){for(var d=0;d<c.items.length;d++){c.items[d].resize()}};this.disable=function(){for(var d=0;d<c.items.length;d++){c.items[d].disable()}};this.enable=function(){for(var d=0;d<c.items.length;d++){c.items[d].enable()}};this.dispose=function(){for(var d=0;d<c.items.length;d++){c.items[d].removeShape()}return true}};function a(d,c){if(c){d.mouseChildren=true;d.mouseEnabled=true;d._enabled=true}else{d.mouseChildren=false;d.mouseEnabled=false;d._enabled=false}}return b}(zim||{});
+</textarea>
+</form>
+
+
+        <p>
+        <a class="smallLogo" href="http://zimjs.com"><img class="smallLogo" src="../4th/icon4.png" width=100 style="margin-left:14px; margin-bottom:-10px;"/></a>
+        </p>
+        <p class="darklinks">
+        Service is provided as is.  If you wish to help support ZIM, you can do so here: <a href="http://zimjs.com/donate/">DONATE</a>
+        </p>
+
+
+    </article>
+
+    <footer>
+      <h3 id="copyright">&copy; 2016 <a href="http://danzen.com" target="danzen">Dan Zen</a></h3>
+	  <script>
+	  var r=Math.round(Math.random()*1000000);
+	  document.write('<img src=/cgi-bin/traffic_plus?company=danzen&page=zimDistillExamples&r='+r+' width=1 height=1>');
+	  </script>
+    </footer>
+
+</body>
+
+</html>

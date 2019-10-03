@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM Frame - Fit Template</title>
+
+    <script src="https://zimjs.org/cdn/1.2.1/createjs_min.js"></script>
+    <script src="https://zimjs.org/cdn/10.5.5/zim.js"></script>
+
+    <script>
+      var frame = new Frame();
+      frame.on("ready", function() {
+        var stage = frame.stage;
+        var stageW = frame.width;
+        var stageH = frame.height;
+
+        new Circle().center().drag();
+
+        stage.update();
+      });
+    </script>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+
+  <body>
+    <!-- canvas with id="myCanvas" is made by zim Frame -->
+  </body>
+</html>

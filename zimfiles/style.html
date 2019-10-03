@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM Style</title>
+
+<!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz!             -->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner     -->
+<!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate     -->
+
+<script src="https://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+<script src="https://d309knd7es5f10.cloudfront.net/zim_10.4.0.js"></script>
+<!-- use zimjs.com/distill for minified individual functions! -->
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"    sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"    sets canvas and stage to dimensions and scales to fit outside window size
+// "full"    sets stage to window size with no scaling
+// "tagID"    add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+
+// as of ZIM 5.5.0 you do not need to put zim before ZIM functions and classes
+var frame = new Frame("fit", 1024, 768, lighter, dark);
+frame.on("ready", function() {
+    zog("ready from ZIM Frame"); // logs in console (F12 - choose console)
+
+    var stage = frame.stage;
+    var stageW = frame.width;
+    var stageH = frame.height;
+
+
+// NEW IN ZIM OCT (8) https://zimjs.com - come on in and discuss https://zimjs.com/slack
+
+// STYLE can be used to set any parameter on a DisplayObject.
+// For instance: Circle, Blob, Button, Pane, Bitmap, Sprite, etc.
+// These are applied at the time the objects are made.
+// They are cascading with each level overriding the previous level:
+//
+// 1. GENERAL: any style can be specified in general
+// 	corner:30 will make all corners default to 30
+// 2. TYPE: styles for object type can be set to override the general styles
+// 	Button:{corner:0} will make all button corners default to 0
+// 3. GROUP: styles for a group can be set to override the type styles
+// 	homePage:{corner:20} will make all objects of that group default to 20
+// 4. OBJECT: styles applied as parameters to the object override all other styles
+// 	new Button({corner:40}) will make this button have a corner of 40
+
+// TRANSFORM STYLES
+// Transformations can also be applied (all are numbers - visible is a Boolean):
+// x, y, rotation, alpha, scale, scaleX, scaleY, regX, regY, skewX, skewY, visible
+// a bounds style has a value of {x:Number, y:Number, width:Number, height:Number}
+// where x and y are optional
+//
+// RANDOM, RANGES, SERIES, FUNCTIONS
+// Any property value can be a ZIM VEE value to make use of ZIM zik (pick)
+// color:[red, green, blue] will pick a random color for each object for which the style is applied
+// x:series([100,200,300]) will place subsequent objects at these locations
+// width:{min:100, max:500} will make objects with a width within this range
+// See Docs on ZIM zik() and ZIM series() for more information
+//
+// FUNCTION STYLES
+// The following functions have been added:
+// addTo, center, centerReg, transform, drag, gesture, outline, mov, animate, wiggle
+// Values of true will give default functionality for all but mov, animate and wiggle
+// ZIM DUO configuration objects can be set as a value for any of these
+// example: drag:true;  or  drag:{onTop:false}
+// For animate and wiggle, [] can be put around multiple configuration objects
+// to wiggle in the x and y for instance or run multiple animate calls on the object
+//
+// CONVENIENCE STYLES
+// add:true - has been provided to add to the stage (use addTo for other containers)
+// move:{x:value, y:value} or move:x - mirrors the mov Function style (just adding the e)
+// style:false - will turn off all styles for the selector
+//
+// EXCLUSION
+// A value of ignore can be used to exclude any earlier styles and return to the original default.
+// ignore is a ZIM global variable - if zns is true then use zim.ignore or just "ignore".
+// Setting style:false will exclude the object from all styles
+// All DisplayObjects have a style parameter (default true). Set to false to ignore styles.
+//
+// GROUPS
+// All DisplayObjects have a group parameter.
+// This parameter accepts a string or a comma delimited string of multiple groups.
+// The group of components can then be targeted in the Group section of STYLE.
+// A group can contain just one component and act like an ID in CSS.
+
+
+    STYLE = {
+        // general styles
+        backgroundColor:pink,
+        rollBackgroundColor:blue,
+        foregroundColor:white,
+        selectedBackgroundColor:pink,
+        corner:15,
+        shadowColor:-1,
+        size:30,
+        padding:3,
+
+        // across Slider and Dial
+        step:1,
+        useTicks:true,
+        tickColor:dark,
+        indicatorColor:dark,
+
+        // type specific styles
+        type:{
+            Label:{
+                add:true,
+                x:54, y:270,
+                color:pink,
+                backgroundColor:"ignore",
+                backing:"ignore"
+            },
+            Keyboard:{
+                color:white,
+                placeColor:white,
+                placeBackgroundColor:purple,
+                shadowColor:"ignore",
+                cursorColor:purple,
+            },
+            ColorPicker:{backgroundColor:"ignore"},
+            CheckBox:{
+                add:true,
+                corner:0,
+                x:770, y:210,
+                label:"Keyboard",
+                color:pink,
+                backgroundColor:"ignore"
+            },
+            RadioButtons:{
+                add:true,
+                x:770, y:280,
+                buttons:{noZik:["Waiter", "Pane", "ColorPicker"]}, // cannot pass an array that is a ZIM VEE value for random pick
+                color:pink,
+                backgroundColor:"ignore"
+            },
+            Button:{
+                center:true,
+                move:{y:150},
+                color:white,
+                width:300,
+                height:100
+            },
+            Tabs:{
+                add:true,
+                x:50, y:500,
+                color:white,
+                backgroundColor:silver
+            },
+            Pad:{
+                add:true,
+                x:80, y:600,
+                color:white,
+                width:180,
+                cols:3, rows:2,
+                backgroundColor:silver,
+                outline:true
+            },
+            Slider:{
+                center:true,
+                move:{y:series([-100, -170])},
+                corner:20,
+                width:40,
+                height:40
+            },
+            Stepper:{add:true, x:760, y:60, scale:.6, color:white, width:100},
+            Pane:{color:white, label:"DRAG", height:150, draggable:true},
+            Dial:{add:true, x:850, y:530, indicatorColor:white},
+            Loader:{add:true, x:720, y:650, color:"ignore"},
+            Window:{add:true, x:20, y:20, height:180, padding:14, height:180},
+            TextArea:{
+                add:true,
+                x:385, y:650,
+                padding:14,
+                backgroundColor:white,
+                color:"ignore"
+            },
+            Indicator:{
+                add:true,
+                x:350, y:60,
+                fill:true,
+                press:true,
+                foregroundColor:white,
+                backgroundColor:silver,
+                backdropColor:pink
+            },
+            ProgressBar:{barType:"rectangle"}
+        },
+        // group specific styles
+        group:{
+            sliderButton:{shadowColor:"rgba(0,0,0,.3)"}
+        }
+    };
+
+    // // create a button for the slider and then add it to STYLE
+    // // or could just style the slider with these
+    // var but = new Button({
+    //     label:"", width:40, height:40,
+    //     backing:new Triangle({a:40, color:pink, style:false}),
+    //     rollBacking:new Triangle({a:40, color:blue, style:false}),
+    //     group:"sliderButton"
+    // }).centerReg(null,null,false);
+    // STYLE.type.Slider.button = but;
+
+    // var bac = new Tile(new Circle({radius:10, color:dark, style:false}), 20, 5).centerReg(null,null,false).alp(.2);
+    // bac.type = "Pattern";
+    // STYLE.backing = bac;
+    // STYLE.rollBacking = bac.clone();
+
+    // COMPONENTS
+    new Button();
+    new Slider();
+    new Slider();
+    new Tabs();
+    new Stepper();
+    new Dial();
+    new Pad();
+
+    // These get a few extra settings below
+    var c = new CheckBox();
+    var r = new RadioButtons();
+    var t = new TextArea();
+    var l = new Loader();
+    var p = new ProgressBar().show().mov(-350);
+    var w = new Window();
+    var i = new Indicator();
+    var k = new Label("Edit with Keyboard", 25);
+
+    // These are hidden initially
+    var pane = new Pane();
+    var waiter = new Waiter();
+    var keyboard = new Keyboard(k);
+    var colorPicker = new ColorPicker();
+
+
+    // EXTRA SETTINGS
+    colorPicker.on("close", function(){colorPicker.removeFrom();});
+    k.on("mousedown", function() {
+        if (!c.checked) {c.checked=true; toggleKeyboard();}
+    });
+    c.on("change", toggleKeyboard);
+    function toggleKeyboard() {
+        if (c.checked) {
+            t.removeFrom();
+            l.removeFrom();
+            keyboard.show();
+        } else {
+            t.addTo();
+            l.addTo();
+            keyboard.hide();
+        }
+    }
+    r.on("change", function() {
+        var components = [waiter, pane, colorPicker];
+        loop(components, function(c) {c.hide()});
+        if (r.selectedIndex != -1) components[r.selectedIndex].show();
+    });
+    pane.on("close", function(){r.selectedIndex=-1;});
+    colorPicker.on("close", function(){r.selectedIndex=-1;});
+    keyboard.on("close", function() {c.checked = false; toggleKeyboard();});
+
+    p.percent = 40;
+    w.add(new Label({
+        text:"ZIM STYLE ** ZIM OCT (8)\n\nAny DisplayObject parameter\nwith object type targeting\nand group targeting.",
+        color:white,
+        size:20,
+        lineHeight:26,
+        style:false // example of overriding styles
+    }));
+    i.selectedIndex = 2;
+    t.text = "Editable";
+    stage.on("stagemousedown", function(e) {
+        if (!t.hitTestPoint(e.stageX, e.stageY)) t.focus = false;
+    });
+
+    stage.update(); // this is needed to show any changes
+
+}); // end of ready
+
+</script>
+
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+<script>
+var r=Math.round(Math.random()*1000000);
+document.write('<img src=/cgi-bin/traffic_plus?company=danzen&page=zimStyle&r='+r+' width=1 height=1>');
+</script>
+</body>
+</html>

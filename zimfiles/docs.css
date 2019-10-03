@@ -1,0 +1,188 @@
+
+body {background-color:#333;}
+#search {
+	padding:5px 5px 5px 12px;
+	position:fixed;
+	right:0px;
+	top:16px;
+	background-color: #444;
+	opacity:1;
+	font-size:18px;
+	font-family: verdana;
+	color:#999;
+	z-index:100;
+}
+#search input {
+	font-size:16px;
+	font-family: verdana;
+	color:#DDD;
+	background-color: #666;
+	border:thin solid #444;
+	padding:6px;
+	margin:4px;
+	width:120px;
+}
+#search button {
+	font-size:16px;
+	font-family: verdana;
+	border:thin solid #444;
+	background-color:#ebcb35;
+	padding:4px;
+	margin:4px;
+	cursor:pointer;
+}
+#search button:nth-child(1) {
+	background-color:violet;
+}
+#search button:nth-child(4) {
+	display:none;
+	background-color:violet;
+}
+#search button:hover {
+	background-color:#acd241;
+}
+#list {
+	margin-top:10px;
+	padding:20px;
+	border-radius:20px;
+	border:thin dashed #666;
+	white-space:pre-wrap;
+	display:none;
+	background-color:#222;
+}
+
+/* bits link */
+.b {position: absolute; top:2px;}
+.d {position: absolute; top:2px;}
+.v {position: absolute; top:3px; opacity:.6;}
+.view.bits {position:relative; padding-right:17px;}
+.view.demo {position:relative; padding-right:4px;}
+.view.demo span {display:inline-block; position:relative; top:.5px; margin-left:3px; opacity:.9}
+.view.vids {position:relative; padding-right:27px;}
+
+pre {font-size:20px; margin-left:20px; color:#ccc;}
+.info {display:none; color:#ccc;}
+#logo, #logoB {margin-left:26px; margin-top:24px; margin-bottom:-8px;}
+#logoB {margin-bottom:30px;}
+.t {color:#DDD; font-size:12px;}
+a {outline:none;}
+.frameTitle  	{background-color:#e472c4;}
+.displayTitle, .buildTitle {background-color:#50c4b7;}
+.methodsTitle, .createTitle	{background-color:#acd241;}
+.controlsTitle, .pagesTitle {background-color:#caae2c;}
+.codeTitle   	{background-color:#f58e25;}
+.wrapTitle   	{background-color:#d1a170;}
+.metaTitle  	{background-color:#555555;}
+.gameTitle  	{background-color:#993399;}
+.distillTitle   {background-color:#caae2c;}
+
+.sub {color:#ccc; font-size:14px; padding:2px 4px;}
+.frameSubtitle {font-size:15px; color:#e472c4;}
+.displaySubtitle {font-size:15px; color:#50c4b7;}
+.methodsSubtitle {font-size:15px; color:#acd241;}
+.controlsSubtitle {font-size:15px; color:#caae2c;}
+.codeSubtitle {font-size:15px; color:#f58e25;}
+.wrapSubtitle {font-size:15px; color:#d1a170;}
+.metaSubtitle {font-size:15px; color:#555555;}
+.gameSubtitle {font-size:15px; color:#993399;}
+
+.info div {
+    color:white; padding:10px; -moz-border-radius:6px; border-radius:6px; opacity: 0.9; filter: alpha(opacity=90);
+}
+.info {
+    padding:20px; background-color:#222; margin:10px 0px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.titleT div {padding:2px;}
+.titleT {white-space:nowrap;}
+.titleA {margin-right:10px; vertical-align:top; display:inline-block;}
+.titleD {display:inline-block; width:85%; white-space:pre-wrap;} /* thanks Hye Won Han! */
+
+.example {
+    margin-top:10px;
+    margin-left:10px;
+    display:inline-block;
+    border:thin dashed #666;
+}
+.extends {
+    /*font-size:16px;
+    color:#777;
+    margin-bottom:-20px;
+    margin-left:0px;*/
+    display:inline-block;
+    margin-bottom:-20px;
+    margin-left:0px;
+}
+.functionTitle {
+    color:#d5afd5;
+    text-transform:uppercase;
+    display:inline-block;
+    margin-bottom:-20px;
+    margin-left:0px;
+}
+.heading {
+    /*text-transform:uppercase;*/
+    display:inline-block;
+    color:#d5afd5;
+    margin-bottom:-20px;
+    margin-left:0px;
+}
+.subheading {
+    /*text-transform:uppercase;*/
+    display:inline-block;
+    font-style:oblique;
+	font-size: 14px;
+	text-decoration: underline;
+
+	color:#999;
+    margin-bottom:-20px;
+    margin-left:0px;
+}
+a.close, a.close2 {color:#FFF; background-color:#999; padding:3px 6px; margin:0px 8px;}
+a.close2 {margin-left:18px;}
+a.view {
+    margin-left:18px;
+    color:#ccc;
+    background-color:transparent;
+    padding:3px 7px;
+    margin:0px 8px;
+    border:solid #777 thin;
+}
+
+/*a.view {margin-left:18px; color:#FFF; background-color:#cda2cd; padding:3px 7px; margin:0px 8px;}*/
+a {color:#FFF; background-color:#FCF; font-size:14px; text-decoration:none; padding:2px 4px;}
+a.frame  	{background-color:#e472c4;}
+a.display, a.build {background-color:#50c4b7;}
+a.methods, a.create {background-color:#acd241;}
+a.controls, a.pages {background-color:#caae2c;}
+a.code   	{background-color:#f58e25;}
+a.wrap   	{background-color:#d1a170;}
+a.meta  	{background-color:#555555;}
+a.game  	{background-color:#993399;}
+a.distill   {background-color:#caae2c;}
+
+
+a:hover, a.see:hover {background-color:yellow; color:#555555;}
+a.plain {background-color:transparent; color:#eee; font-size:18px; text-decoration:underline;}
+
+
+a.links {
+	font-size:18px !important;
+	color:#ddd !important;
+	text-decoration:none !important;
+	background-color:#333 !important;
+	padding:3px 5px !important;
+	margin:3px 0px !important;
+	display:inline-block;
+}
+a.links:hover {
+	background-color:#555 !important;
+	padding:3px 5px !important;
+	margin:3px 0px !important;
+	font-size:18px !important;
+	color:#eee !important;
+	text-decoration:none !important;
+	display:inline-block;
+}

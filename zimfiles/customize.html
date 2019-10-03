@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+
+<!-- for Google -->
+<meta name="description" content="ZIM DOCS - JavaScript Canvas Framework" />
+<meta name="keywords" content="zimjs, createjs, learn, danzen, javascript, code, free, interactive media, html5, canvas, framework" />
+<meta name="author" content="Dan Zen" />
+<meta name="copyright" content="Dan Zen" />
+
+<!-- for Facebook -->
+<meta property="og:title" content="ZIM DOCS - JavaScript Canvas Framework" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://zimjs.com/vee/promo.jpg" />
+<meta property="og:url" content="https://zimjs.com/docs.html" />
+<meta property="og:description" content="ZIM - Welcome to the modern world of coding!  A great place to learn and make professional apps, games, puzzles and sites!" />
+
+<!-- for Twitter -->
+<meta name="twitter:card" content="summary" /> <!-- do not edit this line (must say "summary") -->
+<meta name="twitter:title" content="ZIM DOCS - JavaScript Canvas Framework" />
+<meta name="twitter:description" content="ZIM - learn and use modern, simple and professional #Code for #Canvas with #JavaScript and #ZimJS" />
+<meta name="twitter:image" content="https://zimjs.com/vee/promo.jpg" />
+
+<!-- for Apple -->
+<meta name="viewport" content="width=device-width, initial-scale=.5, user-scalable=yes, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- icons -->
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://zimjs.com/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://zimjs.com/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://zimjs.com/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://zimjs.com/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://zimjs.com/icons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://zimjs.com/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://zimjs.com/icons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://zimjs.com/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://zimjs.com/icons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://zimjs.com/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://zimjs.com/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://zimjs.com/icons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://zimjs.com/icons/favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="ZIM"/>
+<meta name="msapplication-TileColor" content="#000000" />
+<meta name="msapplication-TileImage" content="https://zimjs.com/icons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="https://zimjs.com/icons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="https://zimjs.com/icons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="https://zimjs.com/icons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="https://zimjs.com/icons/mstile-310x310.png" />
+
+
+<script src="https://d309knd7es5f10.cloudfront.net/zim_6.6.3.js"></script>
+<script src="distill/functions.js"></script>
+
+</script>
+<link href="docs.css" rel="stylesheet" type="text/css" />
+	<title>ZIM Customize Documentation</title>
+
+	<style>
+		textarea {
+			padding:10px;
+			font-size:18px;
+			color:#DDD;
+			background-color:#111;
+			border:solid thin #555;
+		}
+		button {
+			margin-top:10px;
+			padding:5px;
+			width:130px;
+			height:50px;
+			border:none;
+			background-color:#DDD;
+			font-size:16px;
+			cursor:pointer;
+		}
+		button:hover {
+			background-color:violet;
+		}
+		#results {
+			margin-top:20px;
+			display:none;
+		}
+	</style>
+</head>
+
+<body>
+<a href="index.html" class="plain"><img id="logo" src="vee/logo_dark.png" border="0" width=100 /></a>
+
+<pre>
+&nbsp;ZIM DOCS
+<div id=list style="display:block;">Customize <a class="plain see" href=docs.html>ZIM Docs</a> with items in the URL:
+
+<a class="plain see" href="https://zimjs.com/docs.html?item=Circle" target=_blank>https://zimjs.com/docs.html?item=Circle</a> - opens Circle docs.
+<a class="plain see" href="https://zimjs.com/docs.html?items=Button,Dial,Emitter" target=_blank>https://zimjs.com/docs.html?items=Button,Dial,Emitter</a> - shows Feautured Items.
+</div>
+Paste your ZIM code below to create links and lists:
+
+<textarea id=code cols=70 rows=12></textarea>
+<button id="button" type="button" name="button">SUBMIT</button>
+<textarea id=results cols=70 rows=12></textarea>
+</pre>
+
+<a href="index.html" class="plain"><img id="logoB" src="vee/logo_dark.png" border="0" width="100" /></a>
+
+<script>
+var r=Math.round(Math.random()*1000000);
+document.write('<img src=/cgi-bin/traffic_plus?company=danzen&page=zimDocsCustomize&r='+r+' width=1 height=1>');
+</script>
+
+<script>
+zid("button").addEventListener("click", function() {
+	var results = zid("results");
+	// zog(code.value)
+	var c = code.value.replace(/\n/, " ");
+	results.style.display = "block";
+
+	var functions = [];
+	loop(zimFunctions, function (entry) {
+		if (entry.match(/>>/)) return;
+		entry = entry.split(" ")[1];
+		entry = entry.replace(/zim\./, "");
+		if (functions.indexOf(entry) < 0) functions.push(entry);
+	});
+	var final = []
+	loop(functions, function (entry) {
+		var regX = new RegExp("(^|[\\.\\s])"+entry+'\\(', "m");
+		if (c.match(regX)) {
+			final.push(entry);
+		}
+	});
+
+	var constants = ["STYLE","ANIMATE","OPTIMIZE","ACTIONEVENT","KEYFOCUS","POSREG","DRAGALL","Ticker"];
+	loop(constants, function (entry) {
+		var regX = new RegExp(entry,"m");
+		if (c.match(regX)) {
+			final.push(entry);
+		}
+	});
+
+	var output = "URL:\nhttps://zimjs.com/docs.html?items=" + final.join(",") + "\n\n";
+
+	output += "LINK:\n<a href=https://zimjs.com/docs.html?items=" + final.join(",") + " target=_blank>Featured ZIM Items</a>\n\n";
+
+	output += "LIST:\n";
+	loop(final, function (f) {
+		output += "https://zimjs.com/docs.html?item=" + f + "\n";
+	});
+
+	output += "\n\nCOMMENT LIST:\n";
+	loop(final, function (f) {
+		output += "<br>https://zimjs.com/docs.html?item=" + f + "\n";
+	});
+
+	results.innerHTML = output;
+});
+
+</script>
+
+</body>
+
+</html>
+
+</body></html>

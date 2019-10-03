@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM Animation</title>
+
+<!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 	        -->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
+<!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
+
+<script src="https://zimjs.org/cdn/1.2.0/createjs_min.js"></script>
+<script src="https://zimjs.org/cdn/10.5.4/zim.js"></script>
+<!-- use zimjs.com/distill for minified individual functions! -->
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"	sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"	sets stage to window size with no scaling
+// "tagID"	add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+var scaling = "fit"; // this will resize to fit inside the screen dimensions
+var width = 1024;
+var height = 768;
+
+// as of ZIM 5.5.0 you do not need to put zim before ZIM functions and classes
+var frame = new Frame(scaling, width, height);
+frame.on("ready", function() {
+    zog("ready from ZIM Frame"); // logs in console (F12 - choose console)
+
+    var stage = frame.stage;
+    var stageW = frame.width;
+    var stageH = frame.height;
+    frame.outerColor = "#444";
+    frame.color = "#ddd";
+
+    // see http://zimjs.com/learn.html for video and code tutorials
+    // see http://zimjs.com/docs.html for documentation
+    // see http://zimjs.com/bits.html for 64 Interactive Media techniques
+
+    var colors = [pink, green, blue, orange, yellow, red];
+    var size = 50;
+    var left = 130;
+    var vert = 110;
+    var dist = 100;
+
+    var but = new Rectangle(dist+size*3, size+30, white).centerReg().removeFrom();
+    var buttons = new Tile(but, 1, 6, null, vert-(size+30))
+        .addTo(stage)
+        .loc(left-75, vert-40) // Tile bounds was adjusted in version 7 just fixed it here without thinking
+        .alp(1)
+        .cur();
+    // make checkbox text select animation rather than checkbox
+    loop(buttons, function(but) {
+        new Rectangle(160, size+30, clear).centerReg(but).mov(270).expand(0)
+    });
+
+    var currentButton = buttons.getChildAt(0);
+    currentButton.color = dark;
+
+    buttons.on("mouseover", function(e) {
+        if (e.target == currentButton) return;
+        e.target.color = tin;
+        stage.update();
+    });
+    buttons.on("mouseout", function(e) {
+        if (e.target == currentButton) return;
+        e.target.color = white;
+        stage.update();
+    });
+    buttons.on("click", function(e) {
+        if (e.target == currentButton) return;
+        currentButton.color = white;
+        currentButton = e.target;
+        currentButton.color = dark;
+        textArea.text = descriptions[buttons.getChildIndex(e.target)];
+    });
+
+    var types = ["ABSOLUTE", "RELATIVE", "SERIES", "FROM", "WAIT", "SEQUENCE"];
+    loop(types, function(type, i){
+        var check = new CheckBox(30, type, true)
+            .addTo(stage, 0)
+            .reg(0, 15)
+            .loc(left+buttons.width-50, buttons.y + buttons.getChildAt(i).y);
+        check.on("change", function(e) {
+            var but = e.target;
+            if (but.num == 5) {pauseAnimate(!but.checked, "bars")} // use ID for sequence pause
+            else anims.getChildAt(but.num).pauseAnimate(!but.checked);
+        });
+        check.num = i;
+    });
+
+    var anims = new Container(stageW, stageH).addTo(stage);
+
+    new Rectangle(size,size,colors[0])
+        .centerReg(anims)
+        .loc(left, vert)
+        .animate({
+            props:{x:left+dist},
+            loop:true,
+            rewind:true
+        });
+
+    new Rectangle(size,size,colors[1])
+        .centerReg(anims)
+        .loc(left+dist/2,vert*2)
+        .rot(45)
+        .animate({
+            props:{rotation:"360"},
+            time:2000,
+            loop:true,
+            ease:"linear"
+        });
+
+    new Rectangle(size,size,colors[2])
+        .centerReg(anims)
+        .loc(left, vert*3)
+        .animate({props:[
+                {props:{x:left+dist}, time:700},
+                {props:{scale:0}, rewind:true},
+                {props:{x:left}, time:700}
+            ],
+            loop:true
+        });
+
+    new Rectangle(size,size,colors[3])
+        .centerReg(anims)
+        .loc(left+dist/2, vert*4)
+        .animate({
+            props:{alpha:0},
+            time:2000,
+            from:true,
+            loop:true,
+            rewind:true
+        });
+
+    new Rectangle(size,size,colors[4])
+        .centerReg(anims)
+        .loc(left, vert*5)
+        .animate({
+            props:{x:left+dist},
+            time:1500,
+            loop:true,
+            ease:"backInOut",
+            rewind:true,
+            loopWait:700,
+            rewindWait:700
+        });
+
+
+    var rect = new Rectangle(size/2, size, colors[5]).reg(0,size);
+    var rects = new Tile(rect, 5, 1, null, (dist+size-size/2*5) / 4)
+        .reg(size/2, -size/2)
+        .addTo(anims)
+        .loc(left+10, vert*6-50);
+
+    rects.animate({
+        props:{scaleY:0},
+        time:700,
+        loop:true,
+        rewind:true,
+        sequence:200,
+        id:"bars"
+    });
+
+    var size = 50;
+    var left = 100;
+    var vert = 110;
+    var dist = 100;
+
+    var textArea = new TextArea({
+        width:400,
+        height:400,
+        size:20,
+        padding:15,
+        backgroundColor:dark,
+        color:light
+    }).centerReg(stage).mov(250,116);
+    textArea.tag.style.whiteSpace = "pre";
+    textArea.tag.style.overflow = "hidden";
+
+
+
+var descriptions = [
+"// ABSOLUTE\n\n\
+rect.animate({\n\
+    props:{x:230},\n\
+    loop:true,\n\
+    rewind:true\n\
+});\n\
+\n\
+// Also regular parameters option:\n\
+\n\
+rect.animate({x:230}, 1000);\n\
+\n\
+// but would have lots of nulls\n\
+// to get to loop and rewind.",
+
+"// RELATIVE\n\n\
+rect\n\
+    .rot(45) // start at 45 degrees\n\
+    .animate({\n\
+        props:{rotation:\"360\"},\n\
+        time:2000,\n\
+        loop:true,\n\
+        ease:\"linear\"\n\
+    });\n\
+\n\
+// Quotes around values\n\
+// means relative.\n\
+// So 360 degrees from 45.",
+
+"// SERIES\n\n\
+rect.animate({\n\
+    props:[\n\
+        {props:{x:230}, time:700},\n\
+        {props:{scale:0}, rewind:true},\n\
+        {props:{x:130}, time:700}\n\
+    ],\n\
+    loop:true\n\
+});\n\
+\n\
+// Put series in array\n\
+// as first obj value.",
+
+"// FROM\n\n\
+rect.animate({\n\
+    props:{alpha:0},\n\
+    time:2000,\n\
+    from:true,\n\
+    loop:true,\n\
+    rewind:true\n\
+});\n\
+\n\
+// Animates from obj values\n\
+// to current values.\n\
+// Use with ANIMATE constant\n\
+// to skip animations.",
+
+"// WAIT\n\n\
+rect.animate({\n\
+    props:{x:230},\n\
+    time:1500,\n\
+    loop:true,\n\
+    ease:\"backInOut\",\n\
+    rewind:true,\n\
+    loopWait:700,\n\
+    rewindWait:700\n\
+});\n\
+\n\
+// Also wait:500, etc. at start\n\
+// and various calls.",
+
+
+"// SEQUENCE\n\n\
+// rects is a ZIM Tile()\n\
+\n\
+rects.animate({\n\
+    props:{scaleY:0},\n\
+    time:700,\n\
+    loop:true,\n\
+    rewind:true,\n\
+    sequence:200,\n\
+    id:\"bars\"\n\
+});\n\
+\n\
+// id is used to pause sequence."
+];
+
+    textArea.text = descriptions[0];
+
+
+    new Label("ZIM animate()").addTo(stage).loc(636, 236); // placed using place()
+
+    frame.loadAssets("icon.png");
+    frame.on("complete", function() {
+        frame.asset("icon.png")
+            .sca(.5)
+            .alp(.8)
+            .addTo(stage)
+            .loc(675, 55)
+            .cur()
+            .on("click", function() {zgo("http://zimjs.com");});
+    });
+
+	new Button({
+		width:80,
+		height:80,
+		label:new Label({text:"DOCS", color:white, size:20}),
+		backing:new Triangle(100,130,-1,blue).rot(-90).reg(70, 90),
+		rollBacking:new Triangle(100,130,-1,pink).rot(-90).reg(70, 90),
+		corner:40,
+		shadowColor:-1
+	})
+		.addTo(stage)
+		.loc(945, -13)
+		.on("click", function(){zgo("http://zimjs.com/docs.html?item=animate")});
+
+    stage.update(); // this is needed to show any changes
+
+}); // end of ready
+
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+<script>
+var r=Math.round(Math.random()*1000000);
+document.write('<img src=/cgi-bin/traffic_plus?company=danzen&page=zimAnimation&r='+r+' width=1 height=1>');
+</script>
+</body>
+</html>
+

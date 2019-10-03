@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+
+<!-- for Apple -->
+<meta name="viewport" content="width=device-width, maximum-scale=1, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="apple-touch-icon-precomposed" href="images/iconS_57.png" />
+
+	<title>ZIM js - DISTILL - ERROR</title>
+
+	<link href="distill.css" rel="stylesheet" type="text/css" />
+
+    <script> /* to handle older IE browswers */
+		document.createElement('article');
+		document.createElement('section');
+		document.createElement('aside');
+		document.createElement('hgroup');
+		document.createElement('nav');
+		document.createElement('header');
+		document.createElement('footer');
+		document.createElement('figure');
+		document.createElement('figcaption');
+  	</script>
+
+
+
+</head>
+
+<body>
+	<header>
+        <h1>ZIMjs - Distill - Error</h1>
+        <div id="banner">
+        <a href="index.html" id="zimpic"><img id="logo2" src="images/logo.jpg" border="0" alt="ZIMjs - Distill - Error" /></a>
+		<a href="../index.html"><div style="cursor:pointer; position:absolute; width:150px; height:130px; right:0px; top:50px; z-index:2;"></div>
+   		</div></a>
+  	</header>
+
+    <article>
+
+		<p id="error" class="darklinks" style="color:orange; padding:20px; background-color:#333; text-align:center;">OOPS - ERROR - PLEASE TRY AGAIN</p>
+		<script>
+			var message = location.search.substr(1,location.search.length-1);
+			if (message) {document.getElementById("error").innerHTML = ("SORRY - "+message+" - PLEASE TRY AGAIN").replace(/\_/g," ");}
+		</script>
+        <p>
+        <a class="smallLogo" href="http://zimjs.com"><img class="smallLogo" src="../4th/icon4.png" width=100 style="margin-left:14px; margin-bottom:-10px;"/></a>
+        </p>
+        <p class="darklinks">
+        Service is provided as is.  If you wish to help support ZIM, you can do so here: <a href="http://zimjs.com/donate/">DONATE</a>
+        </p>
+
+
+    </article>
+
+    <footer>
+      <h3 id="copyright">&copy; 2016 <a href="http://danzen.com" target="danzen">Dan Zen</a></h3>
+	  <script>
+	  var r=Math.round(Math.random()*1000000);
+	  document.write('<img src=/cgi-bin/traffic_plus?company=danzen&page=zimDistillOops&r='+r+' width=1 height=1>');
+	  </script>
+    </footer>
+
+</body>
+
+</html>

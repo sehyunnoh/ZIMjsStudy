@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+
+<!-- for Apple -->
+<meta name="viewport" content="width=device-width, maximum-scale=1, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="apple-touch-icon-precomposed" href="images/iconS_57.png" />
+<script src="https://d309knd7es5f10.cloudfront.net/zimserver_urls.js"></script>
+
+	<title>ZIM js - DISTILL - ZIM Minify Tool</title>
+
+	<link href="distill.css" rel="stylesheet" type="text/css" />
+
+    <script> /* to handle older IE browswers */
+		document.createElement('article');
+		document.createElement('section');
+		document.createElement('aside');
+		document.createElement('hgroup');
+		document.createElement('nav');
+		document.createElement('header');
+		document.createElement('footer');
+		document.createElement('figure');
+		document.createElement('figcaption');
+  	</script>
+
+	<script src="functions.js"></script>
+	<script>
+
+	var options = "";
+	for (var i=0; i<zimFunctions.length; i++) {
+		options += "<option value='"+zimFunctions[i].split(" ")[0]+"'>"+zimFunctions[i]+"</option>";
+	}
+
+	check = false;
+	function toggle(e){
+		if (!check) {
+			check=true;
+			document.getElementById('extra').style.display = 'table-row';
+			document.getElementById('more').innerHTML = "LESS";
+		} else {
+			check=false;
+			document.getElementById('extra').style.display = 'none';
+			document.getElementById('more').innerHTML = "MORE";
+		}
+	}
+
+	</script>
+
+
+
+</head>
+
+<body>
+	<header>
+        <h1>ZIMjs - Distill - Minification Tool</h1>
+        <div id="banner">
+        <a href="index.html" id="zimpic"><img id="logo2" src="images/logo.jpg" border="0" alt="ZIMjs - Distill - Minification Tool" /></a>
+		<a href="../index.html"><div style="cursor:pointer; position:absolute; width:150px; height:130px; right:0px; top:50px; z-index:2;"></div>
+   		</div></a>
+  	</header>
+
+    <article>
+
+        <p class="darklinks">ZIM DISTILL lets you minify the functions your app is using.  <a href="examples.html">EXAMPLES</a>.  This replaces the module files that ZIM had provided.  You can still use the complete minified file available on our <span id="link"><a href="http://d309knd7es5f10.cloudfront.net/zim_3.js" target="_blank">CDN</a></span> or you can serve your own custom file created below with DISTILL.
+
+        <div class="features">
+        <form id="results" method="post"><!-- see script below end of form (not the script in the form) for action attribute -->
+		<!-- <form action="http://localhost:3002/distill" method="post"> -->
+			<table style="margin:20px 0px;" cellspacing=10>
+			<tr><td align=right>COMPANY</td><td><input name="company" type="text" required /></td></tr>
+            <tr><td align=right>APP NAME</td><td><input name="appname" type="text" required /></td></tr>
+			<tr><td align=right>VERSION</td><td><select id="version" name="version" required>
+				<option value="https://zimjs.org/cdn/10.5.3/zim_doc.js" selected>10.5.3/zim.js</option>
+				<option value="https://zimjs.org/cdn/10.5.2/zim_doc.js">10.5.2/zim.js</option>
+				<option value="https://zimjs.org/cdn/10.5.1/zim_doc.js">10.5.1/zim.js</option>
+				<option value="https://zimjs.org/cdn/10.5.0/zim_doc.js">10.5.0/zim.js</option>
+				<option value="https://zimjs.com/live/zim_10.4.1_doc.js">zim_10.4.1.js</option>
+				<option value="https://zimjs.com/live/zim_10.4.0_doc.js">zim_10.4.0.js</option>
+				<option value="https://zimjs.com/live/zim_10.3.1_doc.js">zim_10.3.1.js</option>
+				<option value="https://zimjs.com/live/zim_10.3.0_doc.js">zim_10.3.0.js</option>
+				<option value="https://zimjs.com/live/zim_10.2.0_doc.js">zim_10.2.0.js</option>
+				<option value="https://zimjs.com/live/zim_10.1.0_doc.js">zim_10.1.0.js</option>
+				<option value="https://zimjs.com/live/zim_10.0.1_doc.js">zim_10.0.1.js</option>
+				<option value="https://zimjs.com/live/zim_10_doc.js">zim_10.js</option>
+				<option value="https://zimjs.com/live/zim_9.5.1_doc.js">zim_9.5.1.js</option>
+				<option value="https://zimjs.com/live/zim_9.5.0_doc.js">zim_9.5.0.js</option>
+				<option value="https://zimjs.com/live/zim_9.4.1_doc.js">zim_9.4.1.js</option>
+				<option value="https://zimjs.com/live/zim_9.4.0_doc.js">zim_9.4.0.js</option>
+				<option value="https://zimjs.com/live/zim_9.3.0_doc.js">zim_9.3.0.js</option>
+				<option value="https://zimjs.com/live/zim_9.2.1_doc.js">zim_9.2.1.js</option>
+				<option value="https://zimjs.com/live/zim_9.2.0_doc.js">zim_9.2.0.js</option>
+				<option value="https://zimjs.com/live/zim_9.1.2_doc.js">zim_9.1.2.js</option>
+				<option value="https://zimjs.com/live/zim_9.1.0_doc.js">zim_9.1.0.js</option>
+				<option value="https://zimjs.com/live/zim_9_doc.js">zim_9.js</option>
+				<option value="https://zimjs.com/live/zim_8.3.0_doc.js">zim_8.3.0.js</option>
+				<option value="https://zimjs.com/live/zim_8.2.0_doc.js">zim_8.2.0.js</option>
+				<option value="https://zimjs.com/live/zim_8.1.0_doc.js">zim_8.1.0.js</option>
+				<option value="https://zimjs.com/live/zim_8_doc.js">zim_8.js</option>
+				<option value="https://zimjs.com/live/zim_7.3.2_doc.js">zim_7.3.2.js</option>
+				<option value="https://zimjs.com/live/zim_7.3.1_doc.js">zim_7.3.1.js</option>
+				<option value="https://zimjs.com/live/zim_7.3.0_doc.js">zim_7.3.0.js</option>
+				<option value="https://zimjs.com/live/zim_7.2.0_doc.js">zim_7.2.0.js</option>
+				<option value="https://zimjs.com/live/zim_7.1.0_doc.js">zim_7.1.0.js</option>
+				<option value="https://zimjs.com/live/zim_7.0.2_doc.js">zim_7.0.2.js</option>
+				<option value="https://zimjs.com/live/zim_7.0.1_doc.js">zim_7.0.1.js</option>
+				<option value="https://zimjs.com/live/zim_7_doc.js">zim_7.js</option>
+				<option value="https://zimjs.com/live/zim_6.9.0_doc.js">zim_6.9.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.8.1_doc.js">zim_6.8.1.js</option>
+				<option value="https://zimjs.com/live/zim_6.8.0_doc.js">zim_6.8.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.7.5_doc.js">zim_6.7.5.js</option>
+				<option value="https://zimjs.com/live/zim_6.7.4_doc.js">zim_6.7.4.js</option>
+				<option value="https://zimjs.com/live/zim_6.7.3_doc.js">zim_6.7.3.js</option>
+				<option value="https://zimjs.com/live/zim_6.7.2_doc.js">zim_6.7.2.js</option>
+				<option value="https://zimjs.com/live/zim_6.7.1_doc.js">zim_6.7.1.js</option>
+				<option value="https://zimjs.com/live/zim_6.7.0_doc.js">zim_6.7.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.6.4_doc.js">zim_6.6.4.js</option>
+				<option value="https://zimjs.com/live/zim_6.6.3_doc.js">zim_6.6.3.js</option>
+				<option value="https://zimjs.com/live/zim_6.6.2_doc.js">zim_6.6.2.js</option>
+				<option value="https://zimjs.com/live/zim_6.6.1_doc.js">zim_6.6.1.js</option>
+				<option value="https://zimjs.com/live/zim_6.6.0_doc.js">zim_6.6.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.5.0_doc.js">zim_6.5.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.4.1_doc.js">zim_6.4.1.js</option>
+				<option value="https://zimjs.com/live/zim_6.4.0_doc.js">zim_6.4.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.3.3_doc.js">zim_6.3.3.js</option>
+				<option value="https://zimjs.com/live/zim_6.3.2_doc.js">zim_6.3.2.js</option>
+				<option value="https://zimjs.com/live/zim_6.3.1_doc.js">zim_6.3.1.js</option>
+				<option value="https://zimjs.com/live/zim_6.3.0_doc.js">zim_6.3.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.2.2_doc.js">zim_6.2.2.js</option>
+				<option value="https://zimjs.com/live/zim_6.2.1_doc.js">zim_6.2.1.js</option>
+				<option value="https://zimjs.com/live/zim_6.2.0_doc.js">zim_6.2.0.js</option>
+				<option value="https://zimjs.com/live/zim_6.1.1_doc.js">zim_6.1.1.js</option>
+				<option value="https://zimjs.com/live/zim_6.1.0_doc.js">zim_6.1.0.js</option>
+				<option value="https://zimjs.com/live/zim_6_doc.js">zim_6.js</option>
+				<option value="https://zimjs.com/live/zim_5.5.0_doc.js">zim_5.5.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.4.0_doc.js">zim_5.4.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.3.2_doc.js">zim_5.3.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.3.1_doc.js">zim_5.3.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.3.0_doc.js">zim_5.3.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.2.2_doc.js">zim_5.2.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.2.1_doc.js">zim_5.2.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.2.0_doc.js">zim_5.2.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5.1.0_doc.js">zim_5.1.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_5_doc.js">zim_5.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.9.2_doc.js">zim_4.9.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.9.1_doc.js">zim_4.9.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.9.0_doc.js">zim_4.9.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.8.2_doc.js">zim_4.8.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.8.1_doc.js">zim_4.8.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.8.0_doc.js">zim_4.8.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.7.3_doc.js">zim_4.7.3.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.7.2_doc.js">zim_4.7.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.7.1_doc.js">zim_4.7.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.7.0_doc.js">zim_4.7.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.6.0_doc.js">zim_4.6.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.5.0_doc.js">zim_4.5.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.4.0_doc.js">zim_4.4.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.3.1_doc.js">zim_4.3.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.3.0_doc.js">zim_4.3.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.2.1_doc.js">zim_4.2.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.2.0_doc.js">zim_4.2.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.1.3_doc.js">zim_4.1.3.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.1.2_doc.js">zim_4.1.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.1.1_doc.js">zim_4.1.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.1.0_doc.js">zim_4.1.0.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4.0.1_doc.js">zim_4.0.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_4_doc.js">zim_4.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.1.4_doc.js">zim_3.1.4.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.1.3_doc.js">zim_3.1.3.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.1.2_doc.js">zim_3.1.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.1.1_doc.js">zim_3.1.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.1_doc.js">zim_3.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.0.5_doc.js">zim_3.0.5.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.0.4_doc.js">zim_3.0.4.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.0.3_doc.js">zim_3.0.3.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.0.2_doc.js">zim_3.0.2.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3.0.1_doc.js">zim_3.0.1.js</option>
+				<option value="https://d309knd7es5f10.cloudfront.net/zim_3_doc.js">zim_3.js</option>
+				<option value="https://zimjs.com/live/zim3.js">TEST</option>
+			</select>
+			<input type="hidden" id="dependencies" name="dependencies" />
+			<script>
+				document.getElementById("dependencies").value = dependencies; // from functions.js
+				document.getElementById("link").innerHTML = "<a href="+document.getElementById("version").childNodes[1].value+" target='_blank'>CDN</a>"
+			</script>
+
+			</td></tr>
+            <tr><td valign=top align=right>DISTILL CODE</td><td><textarea name="code" style="width:200px; height:100px;" placeholder="Get this from zim.distill() in your code - see Examples or DOCS.  It will look like a bunch of numbers with spaces between."></textarea></td></tr>
+			<tr id="extra" style="display:none;"><td valign=top align=right>FUNCTIONS</td><td><select id="add" multiple name="add" style="width:250px; height:252px;"></select></td></tr>
+            <tr><td align=right></td><td><input name="submit" value="DISTILL" type="submit" style="cursor:pointer;" /> &nbsp; <span class="darklinks"><a href="javascript: void(0);" onclick="toggle()" id="more">MORE</a></span></td></tr>
+            </table>
+           </form>
+		   <script>
+		   		document.getElementById("results").setAttribute("action", zimDistillURL+"/distill");
+		   </script>
+        </div>
+
+		<script>
+			document.getElementById("add").innerHTML = options;
+		</script>
+
+        <p>
+        <a class="smallLogo" href="https://zimjs.com"><img class="smallLogo" src="../4th/icon4.png" width=100 style="margin-left:14px; margin-bottom:-10px;"/></a>
+        </p>
+        <p class="darklinks">
+        Service is provided as is.  If you wish to help support ZIM, you can do so here: <a href="https://zimjs.com/donate/">DONATE</a>
+        </p>
+
+
+    </article>
+
+    <footer>
+      <h3 id="copyright">&copy; 2017 <a href="http://danzen.com" target="danzen">Dan Zen</a></h3>
+	  <script>
+	  var r=Math.round(Math.random()*1000000);
+	  document.write('<img src=/cgi-bin/traffic_plus?company=danzen&page=zimDistill&r='+r+' width=1 height=1>');
+	  </script>
+    </footer>
+
+</body>
+
+</html>

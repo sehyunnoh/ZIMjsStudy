@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM Typings Parser</title>
+
+<!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 				-->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
+<!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
+
+<script src="http://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+<script>var zon = true; // true for comments from zim code</script>
+<script src="http://d309knd7es5f10.cloudfront.net/zim_6.9.0.js"></script>
+<!-- use zimjs.com/code/distill for minified individual functions! -->
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"		sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"		sets stage to window size with no scaling
+// "tagID"		add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+var scaling = "fit"; // fit scales to fit the browser window while keeping the aspect ratio
+var width = 1024; // can go higher...
+var height = 768;
+var frame = new zim.Frame(scaling, width, height); // see docs for more options and info
+frame.on("ready", function() {
+	zog("ready from ZIM Frame");
+
+	var stage = frame.stage;
+	var stageW = frame.width;
+	var stageH = frame.height;
+    frame.color = frame.dark;
+    window.removeEventListener("wheel", frame.zil[1]);
+    window.removeEventListener("DOMMouseScroll", frame.zil[2]);
+
+    frame.loadAssets({assets:"base.txt", fileType:"text"});
+    frame.on("complete", function() {
+        new Label({text:"ZIM Typings Parser", color:frame.light}).pos(50,30,stage).sca(.7).alp(.8);
+        var textArea = new TextArea({
+            width:stageW-100,
+            height:stageH-100,
+            backingColor:frame.light
+        }).center(stage).mov(0,20);
+		// var text = frame.asset("base.d.ts");
+        var text = frame.asset("base.txt");
+
+        // ES6 Parsing:
+
+        // HANDLE INTERFACES
+        var inter;
+        var currentInterface;
+        var interfaces = {}
+        var interRecord;
+        var interEnd;
+        var imp;
+        var impInsert;
+        var impConstructor;
+        var output = "";
+        loop(text.split(/\n/), function(line,i,total) {
+            if (inter) { // interface definition is detected so grab contents
+                interRecord = line;
+                currentInterface = inter;
+                inter = null;
+            } else if (interRecord) { // still recording contents of interface
+                if (line.match(/^}/)) { // if at end of interface store interface in interfaces
+                    interfaces[currentInterface] = interRecord;
+                    currentInterface = null;
+                    interRecord = null;
+                } else {
+                    interRecord += "\n"+ line;
+                }
+            } else if (imp) {
+                line = line.replace(/{/, `implements ${imp} {`);
+                impInsert = interfaces[imp];
+                imp = null;
+            } else if (impInsert && impInsert) {
+                line += "\n" + impInsert;
+                impInsert = null;
+                impConstructor = null;
+            } else {
+                // read interfaces into memory
+                var interMatch = line.match(/^interface (\S*)/);
+                if (interMatch) {
+                    inter = interMatch[1];
+                    if (inter == "DisplayObject") inter = null; // ignore this one
+                }
+
+                var impMatch = line.match(/^\s*\/\/ IMPLEMENTS (\S*)/);
+                if (impMatch) {
+                    imp = impMatch[1];
+                    return;
+                }
+
+                impConstructor = line.match(/^\s*\/\/ constructor/);
+            }
+            output += line + "\n";
+        });
+        text = output;
+
+        // HANDLE ZIM DUO CONFIG OBJECT
+        output = "";
+        loop(text.split(/\n/), function(line,i,total) {
+            var configMatch = line.match(/\(config_or_([^\?:]*)/);
+            if (configMatch) {
+                var line2 = line;
+                line2 = line2.replace(/\(config_or_/, "(config:{");
+                line2 = line2.replace(/(\)|\):[^:]*)$/, "}$1");
+                line += "\n" + line2;
+            }
+            output += line + "\n";
+        });
+        text = output;
+
+        // HANDLE COPYING GLOBALS TO NAMESPACE
+        output = "";
+        var globals;
+        var globalsRecord;
+        var namespaceInsert;
+        loop(text.split(/\n/), function(line) {
+            if (globals) {
+                if (line.match(/^\/\/ END GLOBALS/)) {
+                    // convert globals to module form
+                    // change declare to exports
+                    globals = null;
+                    goutput = "";
+                    loop(globalsRecord.split(/\n/), function(gline) {
+                        gline = gline.replace(/^(\s*)declare/, "export");
+                        goutput += gline + "\n";
+                    });
+                    globalsRecord = goutput;
+                } else {
+                    globalsRecord += line + "\n";
+                }
+            }
+            if (line.match(/^\/\/ GLOBALS/)) globals = true;
+            if (line.match(/^\s*\/\/ PARSER/)) line += globalsRecord;
+
+            output += line + "\n";
+        });
+
+        textArea.text = output;
+        textArea.tag.style.overflow = "auto";
+        textArea.tag.style.whiteSpace = "pre";
+        stage.update();
+    });
+
+}); // end of ready
+</script>
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+</body>
+</html>
