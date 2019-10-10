@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM Frame - Fit Template</title>
+
+<!-- Welcome to ZIM at https://zimjs.com - Code Creativity!                              -->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS https://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner   -->
+<!-- ZIM is free to use. You can donate to help improve ZIM at https://zimjs.com/donate  -->
+
+<script src="https://zimjs.org/cdn/1.2.1/createjs_min.js"></script>
+<script src="https://zimjs.org/cdn/10.5.5/zim.js"></script>
+<!-- use zimjs.com/distill for minified individual functions! -->
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"	sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"	sets stage to window size with no scaling
+// "tagID"	add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+var scaling = "fit"; // this will resize to fit inside the screen dimensions
+var width = 1024;
+var height = 768;
+var color = light; // ZIM colors like green, blue, pink, faint, clear, etc.
+var outerColor = dark; // any HTML colors like "violet", "#333", etc. are fine to use
+
+var frame = new Frame(scaling, width, height, color, outerColor);
+frame.on("ready", function() {
+    zog("ready from ZIM Frame"); // logs in console (F12 - choose console)
+
+    var stage = frame.stage;
+    var stageW = frame.width;
+    var stageH = frame.height;
+
+    var shape = new Shape().loc(0,0);
+        // // vertical
+        // loop(10, function(i, t){
+            //     shape.graphics.s(dark).mt(50+i*10, 50+t*10).lt(50+i*10,100+t*10);
+            // })
+            
+            // // diagonal
+            // var shape2 = new Shape().loc(100,100);
+            // loop(10, function(i, t){
+                //     shape2.graphics.s(dark).mt(50+i*10, 50+t*10).lt(100+i*10,100+t*10);
+                // })
+                
+                // // horizontal
+                // var shape3 = new Shape().loc(150,150);
+                // loop(20, function(i, t){
+                    //     shape3.graphics.s(dark).mt(50+i*10, 50+t*10).lt(100+i*10,50+t*10);
+                    // })
+                    
+        var shape = new Shape().loc(100,100).sca(4);
+        loop(10, function(i, t){
+            shape.graphics.s(dark).mt(i*10, 0).lt(i*10, 90);
+            shape.graphics.s(dark).mt(0, i*10).lt(90, i*10);
+        })
+
+        var line = new Shape().loc(100,100).sca(4);
+        line.graphics.s(red).mt(0, 0).lt(90, 90);
+
+        var labe = new Label(100).center();
+
+    stage.update(); // this is needed to show any changes
+
+}); // end of ready
+
+</script>
+
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM Frame - Fit Template</title>
+    <script src="https://zimjs.org/cdn/1.2.1/createjs_min.js"></script>
+    <script src="https://zimjs.org/cdn/10.5.5/zim.js"></script>
+    <script>
+      var frame = new Frame();
+      frame.on("ready", function() {
+        var stage = frame.stage;
+        var stageW = frame.width;
+        var stageH = frame.height;
+
+        var shape = new Shape().loc(0,0);
+        // // vertical
+        // loop(10, function(i, t){
+            //     shape.graphics.s(dark).mt(50+i*10, 50+t*10).lt(50+i*10,100+t*10);
+            // })
+            
+            // // diagonal
+            // var shape2 = new Shape().loc(100,100);
+            // loop(10, function(i, t){
+                //     shape2.graphics.s(dark).mt(50+i*10, 50+t*10).lt(100+i*10,100+t*10);
+                // })
+                
+                // // horizontal
+                // var shape3 = new Shape().loc(150,150);
+                // loop(20, function(i, t){
+                    //     shape3.graphics.s(dark).mt(50+i*10, 50+t*10).lt(100+i*10,50+t*10);
+                    // })
+                    
+        var shape = new Shape().loc(0,0);
+        loop(10, function(i, t){
+            // shape.graphics.s(dark).mt(50+i*10, 50).lt(50+i*10, 100);
+            // shape.graphics.s(dark).mt(50, 150+i*10).lt(200, 150+i*10);
+            shape.graphics.s(dark).mt(50+i*10, 50).lt(50+i*10, 100);
+            shape.graphics.s(dark).mt(0, 150+i*10).lt(200, 150+i*10);
+        })
+
+        stage.update();
+      });
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+  <body></body>
+</html>
