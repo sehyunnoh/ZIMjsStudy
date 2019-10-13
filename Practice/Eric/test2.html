@@ -55,7 +55,7 @@ frame.on("ready", function() {
                     // })
                     
         var shape = new Shape().loc(100,100).sca(4);
-        loop(10, function(i, t){
+        loop(10, function(i){
             shape.graphics.s(dark).mt(i*10, 0).lt(i*10, 90);
             shape.graphics.s(dark).mt(0, i*10).lt(90, i*10);
         })
@@ -63,7 +63,7 @@ frame.on("ready", function() {
         var line = new Shape().loc(100,100).sca(4);
         line.graphics.s(red).mt(0, 0).lt(90, 90);
 
-        var labe = new Label(100).center();
+        var label = new Label(100).center();
 
     stage.update(); // this is needed to show any changes
 

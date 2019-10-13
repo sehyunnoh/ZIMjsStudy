@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Challenge - Input page</title>
+    <link rel="stylesheet" href="./css/input.css" />
+    <script src="js/jquery.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="first">
+        <fieldset>
+          <legend>Customer Point</legend>
+          <div style="text-align: center;">
+            <input id="addCustomer" type="button" value="Add" />
+          </div>
+          <div id="customerContainer">
+            <div class="customer">
+              x: <input type="text" value="100" /> &nbsp; y: <input
+                type="text"
+                value="100"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="150" /> &nbsp; y: <input
+                type="text"
+                value="150"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="200" /> &nbsp; y: <input
+                type="text"
+                value="500"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="350" /> &nbsp; y: <input
+                type="text"
+                value="100"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="550" /> &nbsp; y: <input
+                type="text"
+                value="300"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="450" /> &nbsp; y: <input
+                type="text"
+                value="150"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="300" /> &nbsp; y: <input
+                type="text"
+                value="250"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="400" /> &nbsp; y: <input
+                type="text"
+                value="300"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="200" /> &nbsp; y: <input
+                type="text"
+                value="300"
+              /><br />
+            </div>
+            <div class="customer">
+              x: <input type="text" value="350" /> &nbsp; y: <input
+                type="text"
+                value="400"
+              /><br />
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="second">
+        <fieldset>
+          <legend>Supply Point</legend>
+          <div style="text-align: center;">
+            <input id="addSupply" type="button" value="Add" />
+          </div>
+          <div id="supplyContainer">
+            <div class="supply">
+              x: <input type="text" value="250" /> &nbsp; y: <input
+                type="text"
+                value="150"
+              /><br />
+            </div>
+            <div class="supply">
+              x: <input type="text" value="400" /> &nbsp; y: <input
+                type="text"
+                value="100"
+              /><br />
+            </div>
+            <div class="supply">
+              x: <input type="text" value="450" /> &nbsp; y: <input
+                type="text"
+                value="400"
+              /><br />
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="third">
+        <button id="clear" style="width: 100px; height: 40px">
+          Clear
+        </button>
+        <button id="submit" style="width: 100px; height: 40px">
+          Submit
+        </button>
+      </div>
+      <div class="fourth"></div>
+    </div>
+    <script>
+      var customerLine =
+        "<div class='customer'>x: <input type='text' /> &nbsp; y: <input type='text'/></div>";
+      var supplyLine =
+        "<div class='supply'>x: <input type='text' /> &nbsp; y: <input type='text'/></div>";
+
+      $(document).ready(function() {
+        // add customer button
+        $("#addCustomer").click(function() {
+          $("#customerContainer").append(customerLine);
+        });
+        // add supply button
+        $("#addSupply").click(function() {
+          $("#supplyContainer").append(supplyLine);
+        });
+
+        // clear
+        $("#clear").click(function() {
+          $("#customerContainer").html("");
+          $("#customerContainer").append(customerLine);
+          $("#supplyContainer").html("");
+          $("#supplyContainer").append(supplyLine);
+        });
+
+        // submit button -> save to local storage, forward display page
+        $("#submit").click(function() {
+          debugger;
+          var customer = $(".customer");
+          var supply = $(".supply");
+
+          var data = { customer: [], supply: [] };
+
+          for (let i = 0; i < customer.length; i++) {
+            data.customer.push({
+              x: parseInt(customer[i].children[0].value, 10),
+              y: parseInt(customer[i].children[1].value, 10)
+            });
+          }
+
+          for (let i = 0; i < supply.length; i++) {
+            data.supply.push({
+              x: parseInt(supply[i].children[0].value, 10),
+              y: parseInt(supply[i].children[1].value, 10)
+            });
+          }
+
+          localStorage.clear();
+          localStorage.setItem("data", JSON.stringify(data));
+          window.location.href = "./display.html";
+        });
+      });
+    </script>
+  </body>
+</html>

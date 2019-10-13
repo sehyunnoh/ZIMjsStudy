@@ -1,0 +1,39 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 5fr;
+  grid-template-areas: "first second third fourth";
+}
+.first {
+  grid-area: first;
+  height: 100px;
+  text-align: center;
+}
+.second {
+  grid-area: second;
+  height: 100px;
+  text-align: center;
+}
+.third {
+  grid-area: third;
+  height: 100px;
+  text-align: left;
+}
+.fourth {
+  grid-area: fourth;
+}
+fieldset {
+  display: inline-block;
+}
+input[type="text"] {
+  width: 50px;
+}
+input[type="button"] {
+  width: 150px;
+  margin-bottom: 10px;
+}
+#clear {
+  margin: 10px;
+}
+#submit {
+  margin-left: 10px;
+}

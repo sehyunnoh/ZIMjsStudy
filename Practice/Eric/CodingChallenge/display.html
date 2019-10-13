@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Coding Challenge - Display Page</title>
+    <script src="https://zimjs.org/cdn/1.2.1/createjs_min.js"></script>
+    <script src="https://zimjs.org/cdn/10.5.5/zim.js"></script>
+    <script>
+      var frame = new Frame("fit", 600, 600, light, dark);
+
+      frame.on("ready", function() {
+        var stage = frame.stage;
+        var stageW = frame.width;
+        var stageH = frame.height;
+        var lineColor = ["black", "green", "blue", "pink", "faint", "clear"];
+
+        // input data
+        var data = JSON.parse(localStorage.getItem("data"));
+
+        // guide Coordinates
+        for (let i = 50; i <= 550; i += 50) {
+          new Label(i).loc(i, 580).sca(0.5);
+          new Label(i).loc(0, i).sca(0.5);
+        }
+
+        // customer point
+        for (let i = 0; i < data.customer.length; i++) {
+          new Circle(3, "blue").loc(data.customer[i].x, data.customer[i].y);
+        }
+
+        // supply point
+        for (let i = 0; i < data.supply.length; i++) {
+          new Circle(5, "red").loc(data.supply[i].x, data.supply[i].y);
+          new Label("supply", 10, null, red).loc(
+            data.supply[i].x - 15,
+            data.supply[i].y + 5
+          );
+        }
+
+        // declare multi dimension array
+        var sPoint = new Array(data.supply.length);
+        for (let i = 0; i < sPoint.length; i++) {
+          sPoint[i] = new Array(data.customer.length);
+        }
+
+        // calculation distance
+        for (let i = 0; i < data.customer.length; i++) {
+          let distance = Number.MAX_VALUE;
+          let tmpPoint = 0;
+          let c = data.customer;
+          for (let j = 0; j < data.supply.length; j++) {
+            let s = data.supply;
+            let tmpDistance = checkDistance(c[i].x, c[i].y, s[j].x, s[j].y);
+            if (tmpDistance < distance) {
+              distance = tmpDistance;
+              tmpPoint = j;
+            }
+          }
+          sPoint[tmpPoint][i] = 1;
+        }
+
+        // declare line object
+        var line = [];
+        for (let i = 0; i < sPoint.length; i++) {
+          line[i] = new Shape().loc(data.supply[i].x, data.supply[i].y);
+        }
+
+        // draw line
+        for (let i = 0; i < sPoint.length; i++) {
+          for (let j = 0; j < sPoint[i].length; j++) {
+            if (sPoint[i][j] == 1) {
+              drawLine(i, j);
+            }
+          }
+        }
+
+        function checkDistance(x, y, x1, y1) {
+          return Math.sqrt((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
+        }
+
+        function drawLine(s, c) {
+          line[s].graphics
+            .s(lineColor[s % 6])
+            .mt(0, 0)
+            .lt(
+              data.customer[c].x - data.supply[s].x,
+              data.customer[c].y - data.supply[s].y
+            );
+        }
+
+        new Button({
+          label: "<<",
+          width: 70,
+          height: 30,
+          backgroundColor: "purple",
+          rollBackgroundColor: "MediumOrchid",
+          borderWidth: 2,
+          borderColor: "violet",
+          gradient: 0.3,
+          corner: 0
+        })
+          .loc(520, 10)
+          .on("click", function() {
+            window.location.href = "./input.html";
+          });
+
+        stage.update();
+      });
+    </script>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+
+  <body></body>
+</html>
