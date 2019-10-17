@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM Frame - Fit Template</title>
+    <script src="https://zimjs.org/cdn/1.2.1/createjs_min.js"></script>
+    <script src="https://zimjs.org/cdn/10.5.5/zim.js"></script>
+    <script src="https://zimjs.org/cdn/Box2dWeb-2.1.a.3.min.js"></script>
+    <script src="https://zimjs.org/cdn/physics_2.0.js"></script>
+
+    <script>
+      var scaling = "fit";
+      var width = 1024;
+      var height = 768;
+      var color = light;
+      var outerColor = dark;
+
+      var frame = new Frame(scaling, width, height, color, outerColor);
+      frame.on("ready", function() {
+        var stage = frame.stage;
+        var stageW = frame.width;
+        var stageH = frame.height;
+
+        var physics = new Physics(0); // no gravity
+        // physics.drag();
+
+        var circle = new Circle(50, pink)
+          .center()
+          .addPhysics({ restitution: 0.5 });
+
+        circle.player = "Eric";
+        circle.on("mousedown", function() {
+          // circle.removeFrom();
+          circle.impulse(
+            (frame.mouseX - circle.x) * -50,
+            (frame.mouseY - circle.y) * -50
+          );
+          stage.update();
+        });
+
+        var circle2 = new Circle(50, blue)
+          .center()
+          .mov(100)
+          .addPhysics({ restitution: 0.5 });
+
+        circle2.player = "Yui";
+
+        circle2.on("mousedown", function() {
+          // circle.removeFrom();
+          circle2.impulse(
+            (frame.mouseX - circle2.x) * -50,
+            (frame.mouseY - circle2.y) * -50
+          );
+          stage.update();
+        });
+
+        var rec1 = new Rectangle(20, 400)
+          .centerReg()
+          .pos(50)
+          .addPhysics(false)
+          .contact(function(obj) {
+            zog(obj.player);
+            // zog(obj.color == red);
+            rec1.color = red;
+            timeout(1000, function() {
+              rec1.color = black;
+            });
+          });
+
+        var rec2 = new Rectangle(20, 400)
+          .centerReg()
+          .pos(50, null, true, false)
+          .addPhysics(false)
+          .contact(function(obj) {
+            zog(obj.player);
+            // zog(obj.color == red);
+            rec2.color = red;
+            timeout(1000, function() {
+              rec2.color = black;
+            });
+          });
+
+        stage.update();
+      });
+    </script>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+
+  <body></body>
+</html>
