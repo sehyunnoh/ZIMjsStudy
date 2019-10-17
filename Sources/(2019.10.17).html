@@ -30,6 +30,10 @@
 
         circle.player = "Eric";
         circle.on("mousedown", function() {
+          // zog(frame.mouseX);
+          // zog(circle.x);
+          // zog(frame.mouseY);
+          // zog(circle.y);
           // circle.removeFrom();
           circle.impulse(
             (frame.mouseX - circle.x) * -50,
@@ -44,7 +48,6 @@
           .addPhysics({ restitution: 0.5 });
 
         circle2.player = "Yui";
-
         circle2.on("mousedown", function() {
           // circle.removeFrom();
           circle2.impulse(
@@ -55,8 +58,8 @@
         });
 
         var rec1 = new Rectangle(20, 400)
-          .centerReg()
-          .pos(50)
+          .center()
+          .pos(50) // x, y, t/f, t/f
           .addPhysics(false)
           .contact(function(obj) {
             zog(obj.player);
