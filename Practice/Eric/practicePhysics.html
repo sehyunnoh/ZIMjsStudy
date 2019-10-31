@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM - Code Creativity</title>
+    <script src="https://zimjs.org/cdn/1.2.3/createjs_min.js"></script>
+    <script src="https://zimjs.org/cdn/10.6.0/zim.js"></script>
+    <script src="https://zimjs.org/cdn/Box2dWeb-2.1.a.3.min.js"></script>
+    <script src="https://zimjs.org/cdn/physics_2.0.js"></script>
+    <script>
+      // https://zimjs.com - JavaScript Canvas Framework - Code Creativity!
+
+      const frame = new Frame("fit", 1024, 768, light, dark);
+      frame.on("ready", () => {
+        const stage = frame.stage;
+
+        var physics = new Physics(0);
+        // physics.drag();
+
+        var circle = new Circle(50, pink)
+          .center()
+          .mov(-50)
+          .addPhysics({ restitution: 0.5 });
+
+        circle.on("mousedown", function() {
+          circle.impulse(
+            (frame.mouseX - circle.x) * -50,
+            (frame.mouseY - circle.y) * -50
+          );
+
+          stage.update();
+        });
+
+        var circle2 = new Circle(50,blue).center().mov(50).addPhysics({restitution: 0.5});
+
+        circle2.on("mousedown", function(){
+            circle2.impulse(
+                (frame.mouseX - circle2.x) * -50,
+                (frame.mouseY - circle2.y) * -50
+            )
+            stage.update();
+        })
+
+
+        var rec1 = new Rectangle(20, 400).center().pos(50)
+        .addPhysics(false)
+        .contact(function(obj){
+            rec1.color = red;
+            timeout(1000, function(){
+                rec1.color = black;
+            });
+        });
+
+        var rec2 = new Rectangle(20, 400)
+        .center()
+        .pos(50,null,true)
+        .addPhysics(false)
+        .contact(function(obj){
+            rec2.color = red;
+            timeout(1000, function(){
+                rec2.color = black;
+            })
+        })
+
+        stage.update();
+      });
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+  <body></body>
+</html>

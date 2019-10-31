@@ -16,6 +16,7 @@
       var outerColor = dark;
 
       var frame = new Frame(scaling, width, height, color, outerColor);
+
       frame.on("ready", function() {
         var stage = frame.stage;
         var stageW = frame.width;
@@ -26,6 +27,7 @@
 
         var circle = new Circle(50, pink)
           .center()
+          .mov(-50)
           .addPhysics({ restitution: 0.5 });
 
         circle.player = "Eric";
@@ -44,7 +46,7 @@
 
         var circle2 = new Circle(50, blue)
           .center()
-          .mov(100)
+          .mov(50)
           .addPhysics({ restitution: 0.5 });
 
         circle2.player = "Yui";
