@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM - Code Creativity</title>
+    <script src="https://zimjs.org/cdn/1.2.3/createjs_min.js"></script>
+    <script src="https://zimjs.org/cdn/10.6.0/zim.js"></script>
+    <script>
+      const frame = new Frame("fit", 1024, 768, brown, dark);
+      frame.on("ready", () => {
+        const stage = frame.stage;
+
+        new Label("Make your skunk").pos(0, 100, CENTER);
+        var skunk = new Container();
+        skunk.center();
+        var body = new Circle(100, black).addTo(skunk).sca(0.8, 1);
+        var parts = new Tile(
+          series(
+            new Circle(20, white),
+            new Circle(15, black),
+            new Triangle(20, 20, 20, pink),
+            new Rectangle(30, 100, white),
+            new Circle(15, black),
+            new Circle(20, white)
+          ),6,1,20).center(skunk).mov(0, 200).drag();
+
+        parts.on("pressup", function(e) {
+          var bad = parts.loop(function(part) {
+            if (!part.hitTestBounds(body)) {
+              return true;
+            }
+          });
+          if (!bad) {
+            e.remove();
+            skunk.mouseChildren = false;
+            // skunk.removeFrom();
+            var path = new Squiggle({ onTop: false }).sca(2).center();
+            skunk.top().sca(0.5).rot(-90).animate({ props: { path: path }, drag: true });
+            stage.update();
+          }
+        });
+
+        stage.update();
+      });
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+  <body></body>
+</html>

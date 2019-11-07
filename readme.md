@@ -10,3 +10,4 @@
 | 4   | [2019-10-10](Note/(2019.10.10).md) | Shape      | Line          | O   | O    | O   |
 | 5   | [2019-10-17](Note/(2019.10.17).md) | Physics    | billiard      | O   | O    | O   |
 | 6   | [2019-10-31](Note/(2019.10.31).md) | MultiUser  | Zimjs site    | O   | O    | O   |
+| 7   | [2019-11-07](Note/(2019.11.07).md) | Moving skunk | Path        | O   | O    | O   |
